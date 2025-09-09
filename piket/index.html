@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: "Poppins", sans-serif;
-      background: #101418;
+      background: #0f1317;
       color: #dcdcdc;
       margin: 0;
       padding: 20px;
@@ -25,7 +25,7 @@
     h1 {
       font-size: 1.9rem;
       font-weight: 600;
-      color: #cfd8dc;
+      color: #e0e0e0;
       letter-spacing: 1px;
     }
 
@@ -34,45 +34,61 @@
       max-width: 600px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
     }
 
     .day {
-      background: #1a1f24;
       border-radius: 14px;
-      padding: 18px 20px;
-      border: 1px solid #2c3239;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      overflow: hidden;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.5);
     }
 
-    .day h2 {
-      margin: 0;
+    /* bagian nama hari */
+    .day-header {
+      background: #1e2a38;
+      padding: 14px 18px;
       font-size: 1.1rem;
       font-weight: 600;
       color: #90caf9;
-      padding-bottom: 8px;
     }
 
-    /* Pemisah antara hari dan daftar */
-    .separator {
+    /* highlight animasi berkedip */
+    .highlight .day-header {
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        color: #90caf9;
+        text-shadow: 0 0 6px rgba(144,202,249,0.4);
+      }
+      to {
+        color: #bbdefb;
+        text-shadow: 0 0 14px rgba(144,202,249,0.9);
+      }
+    }
+
+    /* bagian daftar anggota */
+    .day-body {
+      background: #1a1f24;
+      padding: 14px 20px;
       border-top: 1px solid #2c3239;
-      margin: 8px 0 10px 0;
     }
 
     .members {
       list-style: none;
-      padding-left: 15px;
       margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
     }
 
     .members li {
-      position: relative;
-      padding-left: 14px;
       font-size: 0.95rem;
       color: #d0d0d0;
+      padding-left: 14px;
+      position: relative;
     }
 
     .members li::before {
@@ -80,12 +96,6 @@
       position: absolute;
       left: 0;
       color: #607d8b;
-    }
-
-    /* Highlight hanya pada nama hari */
-    .highlight h2 {
-      color: #bbdefb;
-      text-shadow: 0 0 8px rgba(144,202,249,0.7);
     }
 
     footer {
@@ -98,8 +108,8 @@
 
     @media (max-width: 600px) {
       h1 { font-size: 1.5rem; }
-      .day { padding: 15px; }
-      .day h2 { font-size: 1rem; }
+      .day-header { font-size: 1rem; padding: 12px 15px; }
+      .day-body { padding: 12px 15px; }
     }
   </style>
 </head>
@@ -110,75 +120,81 @@
 
   <div class="schedule">
     <div class="day" data-day="6">
-      <h2>Sabtu</h2>
-      <div class="separator"></div>
-      <ul class="members">
-        <li>Jangkung</li>
-        <li>Kidut</li>
-        <li>Aji</li>
-      </ul>
+      <div class="day-header">Sabtu</div>
+      <div class="day-body">
+        <ul class="members">
+          <li>Jangkung</li>
+          <li>Kidut</li>
+          <li>Aji</li>
+        </ul>
+      </div>
     </div>
     <div class="day" data-day="1">
-      <h2>Senin</h2>
-      <div class="separator"></div>
-      <ul class="members">
-        <li>Insan</li>
-        <li>Ardi</li>
-        <li>Rifal</li>
-        <li>Topik</li>
-        <li>Sofyan</li>
-      </ul>
+      <div class="day-header">Senin</div>
+      <div class="day-body">
+        <ul class="members">
+          <li>Insan</li>
+          <li>Ardi</li>
+          <li>Rifal</li>
+          <li>Topik</li>
+          <li>Sofyan</li>
+        </ul>
+      </div>
     </div>
     <div class="day" data-day="2">
-      <h2>Selasa</h2>
-      <div class="separator"></div>
-      <ul class="members">
-        <li>Tanto</li>
-        <li>Kidut</li>
-        <li>Doni</li>
-      </ul>
+      <div class="day-header">Selasa</div>
+      <div class="day-body">
+        <ul class="members">
+          <li>Tanto</li>
+          <li>Kidut</li>
+          <li>Doni</li>
+        </ul>
+      </div>
     </div>
     <div class="day" data-day="3">
-      <h2>Rabu</h2>
-      <div class="separator"></div>
-      <ul class="members">
-        <li>Jangkung</li>
-        <li>Ibnu</li>
-        <li>Sofyan</li>
-      </ul>
+      <div class="day-header">Rabu</div>
+      <div class="day-body">
+        <ul class="members">
+          <li>Jangkung</li>
+          <li>Ibnu</li>
+          <li>Sofyan</li>
+        </ul>
+      </div>
     </div>
     <div class="day" data-day="4">
-      <h2>Kamis</h2>
-      <div class="separator"></div>
-      <ul class="members">
-        <li>Tanto</li>
-        <li>Ardi</li>
-        <li>Aji</li>
-        <li>Rifal</li>
-        <li>Doni</li>
-      </ul>
+      <div class="day-header">Kamis</div>
+      <div class="day-body">
+        <ul class="members">
+          <li>Tanto</li>
+          <li>Ardi</li>
+          <li>Aji</li>
+          <li>Rifal</li>
+          <li>Doni</li>
+        </ul>
+      </div>
     </div>
     <div class="day" data-day="5">
-      <h2>Jum'at</h2>
-      <div class="separator"></div>
-      <ul class="members">
-        <li>Jangkung</li>
-        <li>Kidut</li>
-        <li>Aji</li>
-        <li>Insan</li>
-        <li>Ardi</li>
-        <li>Rifal</li>
-        <li>Topik</li>
-        <li>Sofyan</li>
-        <li>Tanto</li>
-        <li>Doni</li>
-        <li>Ibnu</li>
-      </ul>
+      <div class="day-header">Jum'at</div>
+      <div class="day-body">
+        <ul class="members">
+          <li>Jangkung</li>
+          <li>Kidut</li>
+          <li>Aji</li>
+          <li>Insan</li>
+          <li>Ardi</li>
+          <li>Rifal</li>
+          <li>Topik</li>
+          <li>Sofyan</li>
+          <li>Tanto</li>
+          <li>Doni</li>
+          <li>Ibnu</li>
+        </ul>
+      </div>
     </div>
   </div>
 
   <footer>
-    &copy; 2025 Jadwal Piket | Tema Gelap Kalem Futuristik
+    &copy; 2025 Jadwal Piket | Tema Gelap Futuristik
   </footer>
 
   <script>
@@ -190,23 +206,20 @@
       let today = wib.getDay(); // 0=minggu, 1=senin, ...
       if (today === 0) today = 7;
 
-      // cek jam, jika masih < 6 maka pakai hari sebelumnya
       let hour = wib.getHours();
       if (hour < 6) {
         today = today - 1;
-        if (today === 0) today = 7; // kalau hari minggu jam <6, maka sabtu
+        if (today === 0) today = 7;
       }
 
-      // reset semua
       document.querySelectorAll('.day').forEach(d => d.classList.remove('highlight'));
 
-      // highlight sesuai hari
       let todayElement = document.querySelector(`.day[data-day="${today}"]`);
       if (todayElement) todayElement.classList.add('highlight');
     }
 
     highlightToday();
-    setInterval(highlightToday, 30 * 60 * 1000); // cek ulang tiap 30 menit
+    setInterval(highlightToday, 30 * 60 * 1000);
   </script>
 </body>
 </html>
