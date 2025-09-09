@@ -52,19 +52,22 @@
       color: #90caf9;
     }
 
-    /* highlight animasi berkedip */
+    /* highlight animasi merah berkedip */
     .highlight .day-header {
-      animation: glow 2s ease-in-out infinite alternate;
+      animation: redGlow 1.5s ease-in-out infinite alternate;
+      color: #ff6b6b;
     }
 
-    @keyframes glow {
+    @keyframes redGlow {
       from {
-        color: #90caf9;
-        text-shadow: 0 0 6px rgba(144,202,249,0.4);
+        color: #ff6b6b;
+        text-shadow: 0 0 6px rgba(255, 107, 107, 0.4);
+        background: #2a1a1a;
       }
       to {
-        color: #bbdefb;
-        text-shadow: 0 0 14px rgba(144,202,249,0.9);
+        color: #ffb3b3;
+        text-shadow: 0 0 16px rgba(255, 107, 107, 0.9);
+        background: #3a1f1f;
       }
     }
 
