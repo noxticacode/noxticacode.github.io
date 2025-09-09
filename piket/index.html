@@ -5,7 +5,6 @@
   <title>Jadwal Piket</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Tema gelap kalem futuristik */
     body {
       font-family: "Poppins", sans-serif;
       background: #101418;
@@ -38,26 +37,26 @@
       gap: 16px;
     }
 
-    /* Card kalem futuristik */
     .day {
       background: #1a1f24;
       border-radius: 14px;
       padding: 18px 20px;
       border: 1px solid #2c3239;
       box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-      transition: transform 0.25s, box-shadow 0.25s;
-    }
-
-    .day:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
     }
 
     .day h2 {
-      margin: 0 0 10px 0;
+      margin: 0;
       font-size: 1.1rem;
-      font-weight: 500;
+      font-weight: 600;
       color: #90caf9;
+      padding-bottom: 8px;
+    }
+
+    /* Pemisah antara hari dan daftar */
+    .separator {
+      border-top: 1px solid #2c3239;
+      margin: 8px 0 10px 0;
     }
 
     .members {
@@ -83,20 +82,10 @@
       color: #607d8b;
     }
 
-    /* Highlight hari ini */
-    .highlight {
-      border: 1px solid #64b5f6;
-      box-shadow: 0 0 12px rgba(100,181,246,0.4);
-      background: linear-gradient(145deg, #1c242b, #212931);
-      transform: scale(1.01);
-    }
-
+    /* Highlight hanya pada nama hari */
     .highlight h2 {
       color: #bbdefb;
-    }
-
-    .highlight li::before {
-      color: #90caf9;
+      text-shadow: 0 0 8px rgba(144,202,249,0.7);
     }
 
     footer {
@@ -107,17 +96,10 @@
       color: #777;
     }
 
-    /* Responsif */
     @media (max-width: 600px) {
-      h1 {
-        font-size: 1.5rem;
-      }
-      .day {
-        padding: 15px;
-      }
-      .day h2 {
-        font-size: 1rem;
-      }
+      h1 { font-size: 1.5rem; }
+      .day { padding: 15px; }
+      .day h2 { font-size: 1rem; }
     }
   </style>
 </head>
@@ -129,6 +111,7 @@
   <div class="schedule">
     <div class="day" data-day="6">
       <h2>Sabtu</h2>
+      <div class="separator"></div>
       <ul class="members">
         <li>Jangkung</li>
         <li>Kidut</li>
@@ -137,6 +120,7 @@
     </div>
     <div class="day" data-day="1">
       <h2>Senin</h2>
+      <div class="separator"></div>
       <ul class="members">
         <li>Insan</li>
         <li>Ardi</li>
@@ -147,6 +131,7 @@
     </div>
     <div class="day" data-day="2">
       <h2>Selasa</h2>
+      <div class="separator"></div>
       <ul class="members">
         <li>Tanto</li>
         <li>Kidut</li>
@@ -155,6 +140,7 @@
     </div>
     <div class="day" data-day="3">
       <h2>Rabu</h2>
+      <div class="separator"></div>
       <ul class="members">
         <li>Jangkung</li>
         <li>Ibnu</li>
@@ -163,6 +149,7 @@
     </div>
     <div class="day" data-day="4">
       <h2>Kamis</h2>
+      <div class="separator"></div>
       <ul class="members">
         <li>Tanto</li>
         <li>Ardi</li>
@@ -173,6 +160,7 @@
     </div>
     <div class="day" data-day="5">
       <h2>Jum'at</h2>
+      <div class="separator"></div>
       <ul class="members">
         <li>Jangkung</li>
         <li>Kidut</li>
@@ -195,29 +183,30 @@
 
   <script>
     function highlightToday() {
-      // Ambil waktu sekarang dalam WIB
       let now = new Date();
       let utc = now.getTime() + (now.getTimezoneOffset() * 60000);
       let wib = new Date(utc + (7 * 3600000));
 
-      let today = wib.getDay(); // 0 = Minggu, 1 = Senin, ...
-      if (today === 0) today = 7; // Minggu dianggap hari ke-7
+      let today = wib.getDay(); // 0=minggu, 1=senin, ...
+      if (today === 0) today = 7;
 
-      // Reset semua card
+      // cek jam, jika masih < 6 maka pakai hari sebelumnya
+      let hour = wib.getHours();
+      if (hour < 6) {
+        today = today - 1;
+        if (today === 0) today = 7; // kalau hari minggu jam <6, maka sabtu
+      }
+
+      // reset semua
       document.querySelectorAll('.day').forEach(d => d.classList.remove('highlight'));
 
-      // Highlight card sesuai hari
+      // highlight sesuai hari
       let todayElement = document.querySelector(`.day[data-day="${today}"]`);
-      if (todayElement) {
-        todayElement.classList.add('highlight');
-      }
+      if (todayElement) todayElement.classList.add('highlight');
     }
 
-    // Jalankan saat halaman dibuka
     highlightToday();
-
-    // Update otomatis tiap jam (untuk cek pergantian jam 06:00 WIB)
-    setInterval(highlightToday, 60 * 60 * 1000);
+    setInterval(highlightToday, 30 * 60 * 1000); // cek ulang tiap 30 menit
   </script>
 </body>
 </html>
