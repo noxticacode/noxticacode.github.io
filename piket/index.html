@@ -5,13 +5,13 @@
   <title>Jadwal Piket</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Background futuristik */
+    /* Background futuristik gelap */
     body {
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #e6f0ff, #f5fbff);
+      background: linear-gradient(135deg, #0a0f1f, #1a1f33);
       margin: 0;
       padding: 20px;
-      color: #222;
+      color: #e0e0e0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -25,7 +25,8 @@
 
     h1 {
       font-size: 2rem;
-      color: #004d99;
+      color: #4db8ff;
+      text-shadow: 0 0 10px rgba(77, 184, 255, 0.8);
       letter-spacing: 1px;
     }
 
@@ -35,51 +36,68 @@
       max-width: 600px;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 18px;
     }
 
-    /* Card bergaya glassmorphism */
+    /* Card futuristik */
     .day {
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(12px);
-      border-radius: 20px;
-      padding: 18px 22px;
-      box-shadow: 0 8px 20px rgba(0, 128, 255, 0.15);
-      border: 1px solid rgba(0, 128, 255, 0.2);
+      background: rgba(20, 30, 60, 0.8);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0, 153, 255, 0.15);
+      border: 1px solid rgba(0, 153, 255, 0.25);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .day:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0, 128, 255, 0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 0 25px rgba(0, 153, 255, 0.35);
     }
 
     .day h2 {
-      margin: 0 0 8px 0;
-      font-size: 1.3rem;
-      color: #0059b3;
+      margin: 0 0 12px 0;
+      font-size: 1.2rem;
+      color: #66ccff;
+      text-shadow: 0 0 8px rgba(102, 204, 255, 0.7);
     }
 
     .members {
-      font-size: 1rem;
-      color: #333;
+      list-style: none;
+      padding-left: 15px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .members li {
+      position: relative;
+      padding-left: 15px;
+    }
+
+    .members li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #4db8ff;
     }
 
     /* Highlight hari ini */
     .highlight {
-      background: linear-gradient(135deg, #0099ff, #66ccff);
-      color: white;
-      box-shadow: 0 0 25px rgba(0, 153, 255, 0.6);
-      border: none;
-      transform: scale(1.03);
+      background: linear-gradient(135deg, #003366, #0059b3);
+      color: #fff;
+      box-shadow: 0 0 30px rgba(0, 153, 255, 0.6);
+      border: 1px solid #4db8ff;
+      transform: scale(1.02);
     }
 
     .highlight h2 {
       color: #fff;
+      text-shadow: 0 0 12px #fff;
     }
 
-    .highlight .members {
-      color: #f0f8ff;
+    .highlight li::before {
+      color: #fff;
     }
 
     footer {
@@ -87,7 +105,20 @@
       padding: 15px;
       text-align: center;
       font-size: 0.9rem;
-      color: #666;
+      color: #aaa;
+    }
+
+    /* Responsif */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+      .day {
+        padding: 15px;
+      }
+      .day h2 {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -99,32 +130,68 @@
   <div class="schedule">
     <div class="day" data-day="6">
       <h2>Sabtu</h2>
-      <div class="members">Jangkung, Kidut, Aji</div>
+      <ul class="members">
+        <li>Jangkung</li>
+        <li>Kidut</li>
+        <li>Aji</li>
+      </ul>
     </div>
     <div class="day" data-day="1">
       <h2>Senin</h2>
-      <div class="members">Insan, Ardi, Rifal, Topik, Sofyan</div>
+      <ul class="members">
+        <li>Insan</li>
+        <li>Ardi</li>
+        <li>Rifal</li>
+        <li>Topik</li>
+        <li>Sofyan</li>
+      </ul>
     </div>
     <div class="day" data-day="2">
       <h2>Selasa</h2>
-      <div class="members">Tanto, Kidut, Doni</div>
+      <ul class="members">
+        <li>Tanto</li>
+        <li>Kidut</li>
+        <li>Doni</li>
+      </ul>
     </div>
     <div class="day" data-day="3">
       <h2>Rabu</h2>
-      <div class="members">Jangkung, Ibnu, Sofyan</div>
+      <ul class="members">
+        <li>Jangkung</li>
+        <li>Ibnu</li>
+        <li>Sofyan</li>
+      </ul>
     </div>
     <div class="day" data-day="4">
       <h2>Kamis</h2>
-      <div class="members">Tanto, Ardi, Aji, Rifal, Doni</div>
+      <ul class="members">
+        <li>Tanto</li>
+        <li>Ardi</li>
+        <li>Aji</li>
+        <li>Rifal</li>
+        <li>Doni</li>
+      </ul>
     </div>
     <div class="day" data-day="5">
       <h2>Jum'at</h2>
-      <div class="members">Jangkung, Kidut, Aji, Insan, Ardi, Rifal, Topik, Sofyan, Tanto, Doni, Ibnu</div>
+      <ul class="members">
+        <li>Jangkung</li>
+        <li>Kidut</li>
+        <li>Aji</li>
+        <li>Insan</li>
+        <li>Ardi</li>
+        <li>Rifal</li>
+        <li>Topik</li>
+        <li>Sofyan</li>
+        <li>Tanto</li>
+        <li>Doni</li>
+        <li>Ibnu</li>
+      </ul>
     </div>
   </div>
 
   <footer>
-    &copy; 2025 Jadwal Piket | Dibuat dengan ❤
+    &copy; 2025 Jadwal Piket | Mode Futuristik Gelap
   </footer>
 
   <script>
