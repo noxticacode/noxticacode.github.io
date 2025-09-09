@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: "Poppins", sans-serif;
-      background: #000; /* background full hitam */
+      background: #000; /* hitam */
       color: #dcdcdc;
       margin: 0;
       padding: 20px;
@@ -107,27 +107,31 @@
       text-align: center;
       font-size: 0.85rem;
       color: #777;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
     }
 
-    /* gambar di footer */
-    .footer-img {
-      margin-top: 10px;
-      width: 80px; /* ukuran kecil agar pas */
-      height: auto;
-      filter: grayscale(100%);
+    /* Gambar logo di footer */
+    .footer-logo {
+      width: 70px; /* sesuaikan agar kecil */
+      height: 70px;
+      object-fit: contain;
+      filter: grayscale(100%); /* awal hitam putih */
       cursor: pointer;
-      transition: all 0.4s ease;
+      transition: filter 0.3s ease;
     }
 
-    .footer-img.color {
-      filter: grayscale(0%);
+    .footer-logo.colored {
+      filter: grayscale(0%); /* jadi berwarna ketika diklik */
     }
 
     @media (max-width: 600px) {
       h1 { font-size: 1.5rem; }
       .day-header { font-size: 1rem; padding: 12px 15px; }
       .day-body { padding: 12px 15px; }
-      .footer-img { width: 60px; }
+      .footer-logo { width: 55px; height: 55px; }
     }
   </style>
 </head>
@@ -212,8 +216,13 @@
   </div>
 
   <footer>
-    &copy; 2025 Jadwal Piket | Tema Gelap Futuristik <br>
-    <img src="img/20250910_023730.png" alt="Logo" class="footer-img" id="footerLogo">
+    <div>&copy; 2025 Jadwal Piket | Tema Gelap Futuristik</div>
+    <img 
+      src="https://noxticacode.github.io/img/20250910_023730.png" 
+      alt="Footer Logo" 
+      class="footer-logo" 
+      id="footerLogo"
+    >
   </footer>
 
   <script>
@@ -240,10 +249,10 @@
     highlightToday();
     setInterval(highlightToday, 30 * 60 * 1000);
 
-    // toggle grayscale -> color ketika diklik
-    const footerLogo = document.getElementById("footerLogo");
-    footerLogo.addEventListener("click", () => {
-      footerLogo.classList.toggle("color");
+    // Klik logo toggle warna
+    const footerLogo = document.getElementById('footerLogo');
+    footerLogo.addEventListener('click', () => {
+      footerLogo.classList.toggle('colored');
     });
   </script>
 </body>
