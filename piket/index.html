@@ -5,13 +5,13 @@
   <title>Jadwal Piket</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Background futuristik gelap */
+    /* Tema gelap kalem futuristik */
     body {
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #0a0f1f, #1a1f33);
+      background: #101418;
+      color: #dcdcdc;
       margin: 0;
       padding: 20px;
-      color: #e0e0e0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -24,41 +24,40 @@
     }
 
     h1 {
-      font-size: 2rem;
-      color: #4db8ff;
-      text-shadow: 0 0 10px rgba(77, 184, 255, 0.8);
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: #cfd8dc;
       letter-spacing: 1px;
     }
 
-    /* Container jadwal */
     .schedule {
       width: 100%;
       max-width: 600px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 16px;
     }
 
-    /* Card futuristik */
+    /* Card kalem futuristik */
     .day {
-      background: rgba(20, 30, 60, 0.8);
-      border-radius: 18px;
-      padding: 20px;
-      box-shadow: 0 0 20px rgba(0, 153, 255, 0.15);
-      border: 1px solid rgba(0, 153, 255, 0.25);
-      transition: transform 0.3s, box-shadow 0.3s;
+      background: #1a1f24;
+      border-radius: 14px;
+      padding: 18px 20px;
+      border: 1px solid #2c3239;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      transition: transform 0.25s, box-shadow 0.25s;
     }
 
     .day:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 0 25px rgba(0, 153, 255, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
     }
 
     .day h2 {
-      margin: 0 0 12px 0;
-      font-size: 1.2rem;
-      color: #66ccff;
-      text-shadow: 0 0 8px rgba(102, 204, 255, 0.7);
+      margin: 0 0 10px 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #90caf9;
     }
 
     .members {
@@ -67,51 +66,51 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
     }
 
     .members li {
       position: relative;
-      padding-left: 15px;
+      padding-left: 14px;
+      font-size: 0.95rem;
+      color: #d0d0d0;
     }
 
     .members li::before {
       content: "•";
       position: absolute;
       left: 0;
-      color: #4db8ff;
+      color: #607d8b;
     }
 
     /* Highlight hari ini */
     .highlight {
-      background: linear-gradient(135deg, #003366, #0059b3);
-      color: #fff;
-      box-shadow: 0 0 30px rgba(0, 153, 255, 0.6);
-      border: 1px solid #4db8ff;
-      transform: scale(1.02);
+      border: 1px solid #64b5f6;
+      box-shadow: 0 0 12px rgba(100,181,246,0.4);
+      background: linear-gradient(145deg, #1c242b, #212931);
+      transform: scale(1.01);
     }
 
     .highlight h2 {
-      color: #fff;
-      text-shadow: 0 0 12px #fff;
+      color: #bbdefb;
     }
 
     .highlight li::before {
-      color: #fff;
+      color: #90caf9;
     }
 
     footer {
       margin-top: auto;
       padding: 15px;
       text-align: center;
-      font-size: 0.9rem;
-      color: #aaa;
+      font-size: 0.85rem;
+      color: #777;
     }
 
     /* Responsif */
     @media (max-width: 600px) {
       h1 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
       }
       .day {
         padding: 15px;
@@ -124,7 +123,7 @@
 </head>
 <body>
   <header>
-    <h1>📅 Jadwal Piket Mingguan</h1>
+    <h1>Jadwal Piket Mingguan</h1>
   </header>
 
   <div class="schedule">
@@ -191,7 +190,7 @@
   </div>
 
   <footer>
-    &copy; 2025 Jadwal Piket | Mode Futuristik Gelap
+    &copy; 2025 Jadwal Piket | Tema Gelap Kalem Futuristik
   </footer>
 
   <script>
